@@ -27,8 +27,8 @@ fun CssBuilder.hsp2HtmlBackground(resourcePath: String, color: String, image: St
     rule("body") {
         put("overflow-x", "hidden")
         put("background-color", "#$color")
-        val bgPath = "$resourcePath/image/bgs"
-        val bgFile = File("$bgPath/$image").requireIsLocatedIn(File("$resourcePath/image/bgs"))
+        val bgPath = "$resourcePath/images/bgs"
+        val bgFile = File("$bgPath/$image").requireIsLocatedIn(File("$resourcePath/images/bgs"))
         bgFile.takeIf { it.exists() }?.inputStream()?.use { it.readBytes().encodeToBase64String() }
             ?.let { "data:image/gif;base64,$it" }?.let {
                 put("background-image", "url($it)")

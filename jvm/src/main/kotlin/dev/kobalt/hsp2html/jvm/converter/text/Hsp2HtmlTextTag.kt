@@ -19,17 +19,8 @@
 package dev.kobalt.hsp2html.jvm.converter.text
 
 import dev.kobalt.hsp2html.jvm.entity.HspTextEntity
-import dev.kobalt.hsp2html.jvm.extension.encodeToBase64String
-import dev.kobalt.hsp2html.jvm.extension.requireIsLocatedIn
-import kotlinx.html.HtmlBlockTag
-import kotlinx.html.HtmlTagMarker
-import kotlinx.html.div
-import kotlinx.html.img
-import java.awt.image.BufferedImage
-import java.io.ByteArrayOutputStream
-import java.io.File
-import javax.imageio.ImageIO
-import kotlin.math.max
+import dev.kobalt.hsp2html.jvm.resource.ResourceRepository
+import kotlinx.html.*
 
 @HtmlTagMarker
 fun HtmlBlockTag.hsp2HtmlText(resourcePath: String, pageObject: HspTextEntity) {
@@ -38,8 +29,7 @@ fun HtmlBlockTag.hsp2HtmlText(resourcePath: String, pageObject: HspTextEntity) {
             .replace("/N", "\n")
             .replace("/t", "\t")
             .replace("/T", "\t")
-        img(text, test(resourcePath, pageObject).let { "data:image/gif;base64,$it" }, "hspText${pageObject.uid}")
-        /*
+        //img(text, test(resourcePath, pageObject).let { "data:image/gif;base64,$it" }, "hspText${pageObject.uid}")
         pre("hspText${pageObject.uid}") {
             if (pageObject.animation == 1) {
                 id = "typewriter${pageObject.uid}"
@@ -65,15 +55,14 @@ fun HtmlBlockTag.hsp2HtmlText(resourcePath: String, pageObject: HspTextEntity) {
                     .replace("\$pageObjectSpeed\$", "50")
             }
         }
-         */
     }
 }
-
+/*
 /** Supposed to replace text with rendered image.*/
 fun test(resourcePath: String, pageObject: HspTextEntity): String {
-    val fontPath = "$resourcePath/image/fonts"
+    val fontPath = "$resourcePath/images/fonts"
     val fontFile =
-        File("$fontPath/${pageObject.font}${pageObject.style}.png").requireIsLocatedIn(File("$resourcePath/image/fonts"))
+        File("$fontPath/${pageObject.font}${pageObject.style}.png").requireIsLocatedIn(File("$resourcePath/images/fonts"))
     val fontImage = fontFile.takeIf { it.exists() }?.let { ImageIO.read(it) }!!
     val fontColumns = 8
     val fontRows = 12
@@ -116,3 +105,4 @@ fun test(resourcePath: String, pageObject: HspTextEntity): String {
         ImageIO.write(textImage, "png", it); it.toByteArray()
     }.encodeToBase64String()
 }
+*/

@@ -31,7 +31,7 @@ import java.io.File
 @HtmlTagMarker
 fun HtmlBlockTag.hsp2HtmlImage(resourcePath: String, pageObject: HspImageEntity, gifConverter: GifConverter) {
 
-    val imagesFolder = File("$resourcePath/image")
+    val imagesFolder = File("$resourcePath/images")
     val gifsFolder = imagesFolder.resolve("gifs")
     val shapesFolder = imagesFolder.resolve("shapes")
     val staticsFolder = imagesFolder.resolve("static")
@@ -176,7 +176,7 @@ fun HtmlBlockTag.hsp2HtmlImage(resourcePath: String, pageObject: HspImageEntity,
 
 /*
 @HtmlTagMarker
-fun HtmlBlockTag.hsp2HtmlImage(resourcePath: String, pageObject: HspImageEntity, gifConverter: GifConverter) {
+fun HtmlBlockTag.hsp12HtmlImage(resourcePath: String, pageObject: HspImageEntity, gifConverter: GifConverter) {
 
     val imagesFolder = File("$resourcePath/image")
     val gifsFolder = imagesFolder.resolve("gifs")
