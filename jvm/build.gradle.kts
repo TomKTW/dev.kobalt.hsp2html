@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.9.22"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    kotlin("jvm")
+    id("com.github.johnrengelman.shadow")
 }
 
 group = "dev.kobalt"
@@ -56,7 +56,7 @@ dependencies {
 
 tasks {
     named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
-        archiveFileName.set("hsp2html.jar")
+        archiveFileName.set("hsp2html.jvm.jar")
         mergeServiceFiles()
         manifest {
             attributes("Main-Class" to "dev.kobalt.hsp2html.jvm.MainKt")
